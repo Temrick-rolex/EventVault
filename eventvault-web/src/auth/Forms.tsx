@@ -1,36 +1,66 @@
 import { useState } from 'react';
 
+// Main authentication page component that handles both login and registration
 export default function AuthPage() {
+  // State to toggle between login and registration forms
   const [isLogin, setIsLogin] = useState(true);
+   // State to track user role selection (attendee or organizer)
   const [role, setRole] = useState<'attendee' | 'organizer'>('attendee');
+  // State to toggle password visibility
   const [showPassword, setShowPassword] = useState(false);
+  // State to toggle confirm password visibility
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Determine container classes based on form type
+  const containerClasses = !isLogin 
+    ? 'w-full rounded-2xl border border-slate-800 bg-slate-950/80 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-slate-700 relative z-10 max-w-2xl space-y-6 p-8'
+    : 'w-full rounded-2xl border border-slate-800 bg-slate-950/80 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-slate-700 relative z-10 max-w-md space-y-5 p-6';
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-900 px-4 py-12 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Animated background elements with emerald gradient effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-emerald-500/5 via-transparent to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        {/* Floating text animation with EventVault-related keywords */}
+        <div className="absolute inset-0 flex flex-wrap items-center justify-center gap-8 opacity-5">
+          <span className="text-6xl font-bold text-emerald-400 animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}>TICKETS</span>
+          <span className="text-5xl font-bold text-emerald-300 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '4s' }}>SECURE</span>
+          <span className="text-7xl font-bold text-emerald-400 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3.5s' }}>ESCROW</span>
+          <span className="text-5xl font-bold text-emerald-300 animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '4.5s' }}>EVENTS</span>
+          <span className="text-6xl font-bold text-emerald-400 animate-bounce" style={{ animationDelay: '2s', animationDuration: '3s' }}>VAULT</span>
+          <span className="text-5xl font-bold text-emerald-300 animate-bounce" style={{ animationDelay: '2.5s', animationDuration: '4s' }}>PROTECTED</span>
+          <span className="text-7xl font-bold text-emerald-400 animate-bounce" style={{ animationDelay: '3s', animationDuration: '3.5s' }}>SALES</span>
+          <span className="text-5xl font-bold text-emerald-300 animate-bounce" style={{ animationDelay: '3.5s', animationDuration: '4.5s' }}>SAFE</span>
+        </div>
       </div>
       
-      <div className="w-full max-w-md space-y-8 rounded-2xl border border-slate-800 bg-slate-950/80 backdrop-blur-xl p-8 shadow-2xl transition-all duration-300 hover:border-slate-700 relative z-10">
+      {/* Previous gradient animation (commented for future use) */}
+      {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-emerald-500/10 via-emerald-500/5 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      </div> */}
+      
+      {/* Main form container with glassmorphism effect - larger for registration */}
+      <div className={containerClasses}>
         
-        {/* Branding Header */}
+        {/* Branding Header with logo and title */}
         <div className="text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 text-emerald-400 border border-emerald-500/30 shadow-lg shadow-emerald-500/10 transition-all duration-300 hover:scale-105 hover:shadow-emerald-500/20">
-            {/* Vault Shield SVG Icon */}
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-7 w-7">
+          {/* Logo container with gradient background and hover effects */}
+          <div className={`mx-auto flex items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 text-emerald-400 border border-emerald-500/30 shadow-lg shadow-emerald-500/10 transition-all duration-300 hover:scale-105 hover:shadow-emerald-500/20 ${!isLogin ? 'h-16 w-16' : 'h-14 w-14'}`}>
+            {/* Vault Shield SVG Icon representing security */}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${!isLogin ? 'h-8 w-8' : 'h-7 w-7'}`}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
             </svg>
           </div>
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-100 bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
+          {/* Dynamic heading based on form type */}
+          <h2 className={`font-extrabold tracking-tight text-slate-100 bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent ${!isLogin ? 'mt-6 text-4xl' : 'mt-4 text-3xl'}`}>
             {isLogin ? 'Welcome back to EventVault' : 'Create your secure account'}
           </h2>
-          <p className="mt-3 text-sm text-slate-400">
+          {/* Toggle between login and signup with animated underline */}
+          <p className={`text-slate-400 ${!isLogin ? 'mt-4 text-base' : 'mt-2 text-sm'}`}>
             {isLogin ? "Don't have an account? " : 'Already have an account? '}
             <button
               onClick={() => setIsLogin(!isLogin)}
-              className="font-medium text-emerald-400 hover:text-emerald-300 transition-colors focus:outline-none relative group"
+              className="cursor-pointer font-medium text-emerald-400 hover:text-emerald-300 transition-colors focus:outline-none relative group"
             >
               {isLogin ? 'Sign up now' : 'Sign in here'}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
@@ -39,15 +69,16 @@ export default function AuthPage() {
         </div>
 
         {/* Form Content */}
-        <form className="mt-8 space-y-6" onSubmit={(e) => e.preventDefault()}>
+        <form className={`${!isLogin ? 'mt-6 space-y-5' : 'mt-6 space-y-4'}`} onSubmit={(e) => e.preventDefault()}>
           
-          {/* Role Selection Tabs (Only relevant for login context, or adaptable for registration) */}
-          {isLogin && (
-            <div className="grid grid-cols-2 gap-2 rounded-xl bg-slate-900/50 p-1.5 border border-slate-800 backdrop-blur-sm">
+          {/* Role Selection Tabs - Only shown during registration (signup) since RBA handles login */}
+          {/* Commented out: Web portal is for organizers, mobile app for attendees/agents */}
+          {/* {!isLogin && (
+            <div className="grid grid-cols-2 gap-3 rounded-xl bg-slate-900/50 p-1.5 border border-slate-800 backdrop-blur-sm">
               <button
                 type="button"
                 onClick={() => setRole('attendee')}
-                className={`rounded-lg py-2.5 text-sm font-medium transition-all duration-300 ${
+                className={`rounded-lg py-3 text-sm font-medium transition-all duration-300 ${
                   role === 'attendee'
                     ? 'bg-gradient-to-r from-emerald-500/20 to-emerald-500/10 text-emerald-400 shadow-lg shadow-emerald-500/10 border border-emerald-500/30'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
@@ -58,82 +89,166 @@ export default function AuthPage() {
               <button
                 type="button"
                 onClick={() => setRole('organizer')}
-                className={`rounded-lg py-2.5 text-sm font-medium transition-all duration-300 ${
+                className={`rounded-lg py-3 text-sm font-medium transition-all duration-300 ${
                   role === 'organizer'
                     ? 'bg-gradient-to-r from-emerald-500/20 to-emerald-500/10 text-emerald-400 shadow-lg shadow-emerald-500/10 border border-emerald-500/30'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                 }`}
               >
-                <i className="fas fa-building mr-2"></i>Organizer / Agent
+                <i className="fas fa-building mr-2"></i>Organizer
               </button>
             </div>
-          )}
+          )} */}
 
-          <div className="space-y-4 rounded-md shadow-sm">
-            {/* Full Name Field (Register Only) */}
-            {!isLogin && (
-              <div className="group">
-                <label className="block text-sm font-medium text-slate-400 mb-1.5 transition-colors group-focus-within:text-emerald-400">Full Name</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <i className="fas fa-user text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
+          {/* Input fields container */}
+          <div className={`rounded-md shadow-sm ${!isLogin ? 'space-y-4' : 'space-y-3'}`}>
+            {!isLogin ? (
+              /* Registration form - Matrix grid layout */
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Full Name Field */}
+                <div className="group">
+                  <label className="block text-sm font-medium text-slate-400 
+                    mb-1.5 transition-colors group-focus-within:text-emerald-400">Full Name</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <i className="fas fa-user text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
+                    </div>
+                    <input
+                      type="text"
+                      required
+                      className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-4 py-3 
+                        text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 
+                      focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      placeholder="John Doe"
+                    />
                   </div>
-                  <input
-                    type="text"
-                    required
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-4 py-3 text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
-                    placeholder="John Doe"
-                  />
+                </div>
+
+                {/* Email Address Field */}
+                <div className="group">
+                  <label className="block text-sm font-medium text-slate-400 mb-1.5 transition-colors group-focus-within:text-emerald-400">Email Address</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <i className="fas fa-envelope text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
+                    </div>
+                    <input
+                      type="email"
+                      required
+                      className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-4 py-3 text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+                </div>
+
+                {/* Password Field */}
+                <div className="group">
+                  <label className="block text-sm font-medium text-slate-400 mb-1.5 transition-colors group-focus-within:text-emerald-400">Password</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <i className="fas fa-lock text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
+                    </div>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-12 py-3 text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      placeholder="••••••••"
+                    />
+                    {/* Password visibility toggle button */}
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-emerald-400 focus:outline-none transition-colors"
+                    >
+                      {showPassword ? (
+                        <i className="fas fa-eye-slash text-sm" />
+                      ) : (
+                        <i className="fas fa-eye text-sm" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Confirm Password Field - Same level as password */}
+                <div className="group">
+                  <label className="block text-sm font-medium text-slate-400 mb-1.5 transition-colors group-focus-within:text-emerald-400">Confirm Password</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <i className="fas fa-lock text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
+                    </div>
+                    <input
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      required
+                      className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-12 py-3 text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      placeholder="••••••••"
+                    />
+                    {/* Confirm password visibility toggle button */}
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-emerald-400 focus:outline-none transition-colors"
+                    >
+                      {showConfirmPassword ? (
+                        <i className="fas fa-eye-slash text-sm" />
+                      ) : (
+                        <i className="fas fa-eye text-sm" />
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
+            ) : (
+              /* Login form - Single column layout */
+              <>
+                {/* Email Address Field */}
+                <div className="group">
+                  <label className="block text-sm font-medium text-slate-400 mb-1.5 transition-colors group-focus-within:text-emerald-400">Email Address</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <i className="fas fa-envelope text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
+                    </div>
+                    <input
+                      type="email"
+                      required
+                      className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-4 py-3 text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+                </div>
+
+                {/* Password Field with visibility toggle */}
+                <div className="group">
+                  <label className="block text-sm font-medium text-slate-400 mb-1.5 transition-colors group-focus-within:text-emerald-400">Password</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <i className="fas fa-lock text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
+                    </div>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-12 py-3 text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      placeholder="••••••••"
+                    />
+                    {/* Password visibility toggle button */}
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-emerald-400 focus:outline-none transition-colors"
+                    >
+                      {showPassword ? (
+                        <i className="fas fa-eye-slash text-sm" />
+                      ) : (
+                        <i className="fas fa-eye text-sm" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </>
             )}
-
-            {/* Email Field */}
-            <div className="group">
-              <label className="block text-sm font-medium text-slate-400 mb-1.5 transition-colors group-focus-within:text-emerald-400">Email Address</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <i className="fas fa-envelope text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
-                </div>
-                <input
-                  type="email"
-                  required
-                  className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-4 py-3 text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
-                  placeholder="you@example.com"
-                />
-              </div>
-            </div>
-
-            {/* Password Field */}
-            <div className="group">
-              <label className="block text-sm font-medium text-slate-400 mb-1.5 transition-colors group-focus-within:text-emerald-400">Password</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <i className="fas fa-lock text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
-                </div>
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  required
-                  className="w-full rounded-xl border border-slate-800 bg-slate-900/50 pl-11 pr-12 py-3 text-slate-200 placeholder-slate-500 focus:border-emerald-500/50 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-emerald-400 focus:outline-none transition-colors"
-                >
-                  {showPassword ? (
-                    <i className="fas fa-eye-slash text-sm" />
-                  ) : (
-                    <i className="fas fa-eye text-sm" />
-                  )}
-                </button>
-              </div>
-            </div>
           </div>
 
-          {/* Conditional Sub-options */}
+          {/* Conditional Sub-options based on form type */}
           {isLogin ? (
+            /* Login-specific options: remember me and forgot password */
             <div className="flex items-center justify-between text-sm">
               <div className="flex items-center">
                 <input
@@ -145,11 +260,12 @@ export default function AuthPage() {
                   Remember device
                 </label>
               </div>
-              <a href="#" className="font-medium text-emerald-400 hover:text-emerald-300 transition-colors">
+              <a href="#" className="cursor-pointer font-medium text-emerald-400 hover:text-emerald-300 transition-colors">
                 Forgot password?
               </a>
             </div>
           ) : (
+            /* Registration-specific option: terms of service acceptance */
             <div className="flex items-start text-sm">
               <input
                 id="terms"
@@ -163,12 +279,13 @@ export default function AuthPage() {
             </div>
           )}
 
-          {/* Submit Button */}
+          {/* Submit Button with gradient overlay and hover effects */}
           <div>
             <button
               type="submit"
-              className="group relative flex w-full justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-emerald-500/40 active:scale-[0.98] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+              className="cursor-pointer group relative flex w-full justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-emerald-500/40 active:scale-[0.98] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-950"
             >
+              {/* Gradient overlay for hover effect */}
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative flex items-center gap-2">
                 {isLogin ? (
@@ -181,9 +298,9 @@ export default function AuthPage() {
           </div>
         </form>
 
-        {/* Third-Party Authentication Divider */}
+        {/* Third-Party Authentication - Only shown for login */}
         {isLogin && (
-          <div className="mt-6">
+          <div className="mt-4">
             <div className="relative flex items-center justify-center">
               <div className="absolute w-full border-t border-slate-800" />
               <span className="relative bg-slate-950 px-3 text-xs uppercase tracking-wider text-slate-500">
@@ -191,12 +308,12 @@ export default function AuthPage() {
               </span>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-3">
               <button
                 type="button"
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm font-medium text-slate-300 hover:bg-slate-900 hover:text-slate-100 hover:border-slate-700 transition-all duration-300 group"
+                className="cursor-pointer flex w-full items-center justify-center gap-2 rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm font-medium text-slate-300 hover:bg-slate-900 hover:text-slate-100 hover:border-slate-700 transition-all duration-300 group"
               >
-                {/* Standard Google Icon SVG */}
+                {/* Google Icon SVG with hover scale effect */}
                 <svg className="h-5 w-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                   <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />

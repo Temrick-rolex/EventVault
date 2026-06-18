@@ -56,6 +56,13 @@ export default function DashboardHome() {
     { id: 4, task: 'Release escrow funds for completed event', priority: 'High', due: 'In 5 days' },
   ]
 
+  const recentNotifications = [
+    { id: 1, message: 'New ticket purchase for Summer Festival', time: '5 minutes ago', type: 'success' },
+    { id: 2, message: 'Escrow funds released for Tech Conference', time: '1 hour ago', type: 'info' },
+    { id: 3, message: 'Verification agent accepted invitation', time: '2 hours ago', type: 'success' },
+    { id: 4, message: 'Event deadline approaching for Art Exhibition', time: '3 hours ago', type: 'warning' },
+  ]
+
   const quickActions = [
     { id: 1, title: 'Create New Event', icon: 'fa-plus-circle', color: 'bg-emerald-600' },
     { id: 2, title: 'Manage Events', icon: 'fa-calendar-days', color: 'bg-emerald-500' },
@@ -71,8 +78,8 @@ export default function DashboardHome() {
           { label: 'Total Events', value: counters.totalEvents, icon: 'fa-calendar-days', color: 'text-emerald-400' },
           { label: 'Active Events', value: counters.activeEvents, icon: 'fa-check-circle', color: 'text-emerald-400' },
           { label: 'Tickets Sold', value: counters.ticketsSold.toLocaleString(), icon: 'fa-ticket', color: 'text-emerald-400' },
-          { label: 'Revenue', value: `$${counters.revenue.toLocaleString()}`, icon: 'fa-dollar-sign', color: 'text-emerald-400' },
-          { label: 'Pending Escrow', value: `$${counters.pendingEscrow.toLocaleString()}`, icon: 'fa-vault', color: 'text-emerald-400' },
+          { label: 'Revenue', value: `XAF ${counters.revenue.toLocaleString()}`, icon: 'fa-dollar-sign', color: 'text-emerald-400' },
+          { label: 'Pending Escrow', value: `XAF ${counters.pendingEscrow.toLocaleString()}`, icon: 'fa-vault', color: 'text-emerald-400' },
           { label: 'Upcoming', value: counters.upcomingEvents, icon: 'fa-clock', color: 'text-emerald-400' },
         ].map((stat, index) => (
           <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 shadow-sm hover:shadow-md transition-shadow">
@@ -120,8 +127,12 @@ export default function DashboardHome() {
 
         {/* Upcoming Tasks */}
         <div className="bg-slate-800/50 rounded-xl border border-slate-700 shadow-sm">
-          <div className="p-6 border-b border-slate-700">
+          <div className="p-6 border-b border-slate-700 flex items-center justify-between">
             <h2 className="text-lg font-semibold text-slate-100">Upcoming Tasks</h2>
+            <button className="flex items-center gap-2 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded-lg transition-colors">
+              <i className="fas fa-plus"></i>
+              Add Task
+            </button>
           </div>
           <div className="p-6">
             <div className="space-y-3">
@@ -147,6 +158,34 @@ export default function DashboardHome() {
         </div>
       </div>
 
+      {/* Recent Notifications */}
+      <div className="bg-slate-800/50 rounded-xl border border-slate-700 shadow-sm">
+        <div className="p-6 border-b border-slate-700">
+          <h2 className="text-lg font-semibold text-slate-100">Recent Notifications</h2>
+        </div>
+        <div className="p-6">
+          <div className="space-y-3">
+            {recentNotifications.map((notification) => (
+              <div key={notification.id} className="flex items-start gap-4 p-4 bg-slate-900/50 rounded-lg hover:bg-slate-800 transition-colors">
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+                  notification.type === 'success' ? 'bg-emerald-500/20 text-emerald-400' :
+                  notification.type === 'warning' ? 'bg-yellow-500/20 text-yellow-400' :
+                  'bg-blue-500/20 text-blue-400'
+                }`}>
+                  {notification.type === 'success' && <i className="fas fa-check-circle"></i>}
+                  {notification.type === 'warning' && <i className="fas fa-exclamation-triangle"></i>}
+                  {notification.type === 'info' && <i className="fas fa-info-circle"></i>}
+                </div>
+                <div className="flex-1">
+                  <p className="font-medium text-slate-100 text-sm">{notification.message}</p>
+                  <p className="text-xs text-slate-400 mt-1">{notification.time}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Quick Actions */}
       <div className="bg-slate-800/50 rounded-xl border border-slate-700 shadow-sm">
         <div className="p-6 border-b border-slate-700">
@@ -157,7 +196,7 @@ export default function DashboardHome() {
             {quickActions.map((action) => (
               <button
                 key={action.id}
-                className={`flex items-center gap-4 p-4 rounded-lg ${action.color} text-white hover:opacity-90 transition-opacity`}
+                className={`cursor-pointer flex items-center gap-4 p-4 rounded-lg ${action.color} text-white hover:opacity-90 transition-opacity`}
               >
                 <i className={`fas ${action.icon} text-2xl`}></i>
                 <span className="font-medium">{action.title}</span>

@@ -68,7 +68,7 @@ export default function VerificationAgents() {
         </div>
         <button
           onClick={() => setShowInviteModal(true)}
-          className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-medium rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-sm"
+          className="cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-medium rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-sm"
         >
           <i className="fas fa-user-plus mr-2"></i>Invite Agent
         </button>
@@ -122,7 +122,7 @@ export default function VerificationAgents() {
                     {agent.status === 'Pending' && (
                       <button
                         onClick={() => handleResendInvite(agent.id)}
-                        className="p-2 text-emerald-400 hover:text-emerald-300 transition-colors"
+                        className="cursor-pointer p-2 text-emerald-400 hover:text-emerald-300 transition-colors"
                         title="Resend invitation"
                       >
                         <i className="fas fa-redo"></i>
@@ -130,7 +130,7 @@ export default function VerificationAgents() {
                     )}
                     <button
                       onClick={() => handleRevokeInvite(agent.id)}
-                      className="p-2 text-red-400 hover:text-red-300 transition-colors"
+                      className="cursor-pointer p-2 text-red-400 hover:text-red-300 transition-colors"
                       title="Revoke invitation"
                     >
                       <i className="fas fa-ban"></i>
@@ -159,7 +159,7 @@ export default function VerificationAgents() {
               <h2 className="text-xl font-semibold text-slate-100">Invite Verification Agent</h2>
               <button
                 onClick={() => setShowInviteModal(false)}
-                className="text-slate-400 hover:text-slate-300 transition-colors"
+                className="cursor-pointer text-slate-400 hover:text-slate-300 transition-colors"
               >
                 <i className="fas fa-times text-xl"></i>
               </button>
@@ -190,7 +190,7 @@ export default function VerificationAgents() {
               <div className="flex gap-3 pt-4">
                 <button
                   onClick={() => setShowInviteModal(false)}
-                  className="flex-1 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium"
+                  className="cursor-pointer flex-1 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium"
                 >
                   Cancel
                 </button>

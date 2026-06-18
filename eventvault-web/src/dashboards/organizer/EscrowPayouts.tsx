@@ -48,21 +48,21 @@ export default function EscrowPayouts() {
             <span className="text-sm text-slate-400">Locked Funds</span>
             <i className="fas fa-vault text-emerald-400"></i>
           </div>
-          <div className="text-2xl font-bold text-slate-100">${totalLocked.toLocaleString()}</div>
+          <div className="text-2xl font-bold text-slate-100">XAF {totalLocked.toLocaleString()}</div>
         </div>
         <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 shadow-sm">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-slate-400">Released Funds</span>
             <i className="fas fa-check-circle text-emerald-400"></i>
           </div>
-          <div className="text-2xl font-bold text-slate-100">${totalReleased.toLocaleString()}</div>
+          <div className="text-2xl font-bold text-slate-100">XAF {totalReleased.toLocaleString()}</div>
         </div>
         <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 shadow-sm">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-slate-400">Refunded Funds</span>
             <i className="fas fa-undo text-red-400"></i>
           </div>
-          <div className="text-2xl font-bold text-slate-100">${totalRefunded.toLocaleString()}</div>
+          <div className="text-2xl font-bold text-slate-100">XAF {totalRefunded.toLocaleString()}</div>
         </div>
       </div>
 
@@ -89,7 +89,7 @@ export default function EscrowPayouts() {
           <button
             key={status}
             onClick={() => setFilter(status.toLowerCase())}
-            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+            className={`cursor-pointer px-4 py-2 rounded-lg font-medium transition-all ${
               filter === status.toLowerCase()
                 ? 'bg-emerald-500 text-white'
                 : 'bg-slate-800 text-slate-400 hover:bg-slate-700 border border-slate-700'
@@ -117,7 +117,7 @@ export default function EscrowPayouts() {
                     </span>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-slate-100">${account.lockedAmount.toLocaleString()}</div>
+                    <div className="text-2xl font-bold text-slate-100">XAF {account.lockedAmount.toLocaleString()}</div>
                     <div className="text-sm text-slate-400">Locked Amount</div>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export default function EscrowPayouts() {
                 {account.status === 'Locked' && account.eligible && (
                   <button
                     onClick={() => handleReleaseFunds(account.id)}
-                    className="w-full px-4 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
+                    className="cursor-pointer w-full px-4 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
                   >
                     <i className="fas fa-unlock mr-2"></i>Release Funds
                   </button>

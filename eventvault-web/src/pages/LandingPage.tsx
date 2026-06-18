@@ -161,26 +161,26 @@ function LandingPage() {
                 EventVault
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
-              The secure ticket reservation platform that protects both organizers and attendees. 
+            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed text-justify">
+              The secure Event management & ticket reservation platform that protects both organizers and attendees. 
               Experience the future of event management with our escrow-powered system.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-slate-100 font-semibold rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-emerald-500/30">
+              <button className="cursor-pointer px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-slate-100 font-semibold rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-emerald-500/30">
                 Get Started
               </button>
-              <button className="px-8 py-4 border-2 border-emerald-500 text-emerald-400 font-semibold rounded-lg hover:bg-emerald-500/10 transition-all duration-300">
+              <button className="cursor-pointer px-8 py-4 border-2 border-emerald-500 text-emerald-400 font-semibold rounded-lg hover:bg-emerald-500/10 transition-all duration-300">
                 Learn More
               </button>
               <button 
                 onClick={() => navigate('/dashboard')}
-                className="px-8 py-4 bg-slate-800 text-emerald-400 font-semibold rounded-lg hover:bg-slate-700 transition-all duration-300 border border-emerald-500/30"
+                className="cursor-pointer px-8 py-4 bg-slate-800 text-emerald-400 font-semibold rounded-lg hover:bg-slate-700 transition-all duration-300 border border-emerald-500/30"
               >
                 <i className="fas fa-tachometer-alt mr-2"></i>Dashboard
               </button>
               <button 
                 onClick={() => navigate('/auth')}
-                className="px-8 py-4 bg-slate-800 text-emerald-400 font-semibold rounded-lg hover:bg-slate-700 transition-all duration-300 border border-emerald-500/30"
+                className="cursor-pointer px-8 py-4 bg-slate-800 text-emerald-400 font-semibold rounded-lg hover:bg-slate-700 transition-all duration-300 border border-emerald-500/30"
               >
                 <i className="fas fa-sign-in-alt mr-2"></i>Auth Forms
               </button>
@@ -192,7 +192,7 @@ function LandingPage() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`cursor-pointer w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide ? 'bg-emerald-400 w-8' : 'bg-emerald-400/30'
                   }`}
                 />
@@ -231,10 +231,137 @@ function LandingPage() {
             <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
               Why Choose <span className="text-emerald-400">EventVault</span>?
             </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Our platform combines cutting-edge security with user-friendly design to revolutionize event ticketing.
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto text-justify">
+              Our platform combines cutting-edge security with user-friendly design to revolutionize event management & ticketing 
+              with affordable plans to suit every need designed to be accessible to everyone, from small local events to large-scale conferences.
             </p>
           </div>
+          {/* subscription plans section */}
+          <div className='flex flex-col md:flex-row gap-6 items-stretch justify-center mb-16'>
+            {/* Basic Plan */}
+            <div className='flex-1 p-8 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10'>
+              <div className='flex items-center gap-3 mb-4'>
+                <div className='w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center'>
+                  <i className='fas fa-seedling text-emerald-400 text-xl'></i>
+                </div>
+                <div>
+                  <h3 className='text-xl font-bold text-slate-100'>Basic Plan</h3>
+                  <p className='text-sm text-slate-400'>Perfect for small events and startups</p>
+                </div>
+              </div>
+              <div className='mb-6'>
+                <span className='text-3xl font-bold text-emerald-400'>XAF 0</span>
+                <span className='text-slate-400'>/month</span>
+              </div>
+              <ul className='space-y-3 mb-6'>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Up to 2 active events at a time</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Standard ticket categories (Standard, VIP)</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Basic ticket design upload</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Maximum of 2 verification agents per event</span>
+                </li>
+              </ul>
+              <button className='w-full cursor-pointer px-6 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium'>
+                Get Started
+              </button>
+            </div>
+
+            {/* Pro Plan - Featured */}
+            <div className='flex-1 p-8 bg-gradient-to-b from-emerald-500/10 to-slate-800/50 rounded-2xl border-2 border-emerald-500 hover:border-emerald-400 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/20 relative'>
+              <div className='absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-emerald-500 text-white text-sm font-semibold rounded-full'>
+                Most Popular
+              </div>
+              <div className='flex items-center gap-3 mb-4 mt-2'>
+                <div className='w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center'>
+                  <i className='fas fa-rocket text-emerald-400 text-xl'></i>
+                </div>
+                <div>
+                  <h3 className='text-xl font-bold text-slate-100'>Pro Plan</h3>
+                  <p className='text-sm text-slate-400'>For growing event organizers</p>
+                </div>
+              </div>
+              <div className='mb-6'>
+                <span className='text-3xl font-bold text-emerald-400'>XAF 29 - 49</span>
+                <span className='text-slate-400'>/month</span>
+                <p className='text-xs text-slate-500 mt-1'>+ reduced commission fee</p>
+              </div>
+              <ul className='space-y-3 mb-6'>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Unlimited active event listings</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Full AI Image Generation Suite for custom ticket templates</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Up to 10 verification agents per event</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Advanced sales analytics dashboard</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Priority escrow payout processing (48-hour mark)</span>
+                </li>
+              </ul>
+              <button className='w-full cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium'>
+                Upgrade to Pro
+              </button>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className='flex-1 p-8 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10'>
+              <div className='flex items-center gap-3 mb-4'>
+                <div className='w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center'>
+                  <i className='fas fa-building text-emerald-400 text-xl'></i>
+                </div>
+                <div>
+                  <h3 className='text-xl font-bold text-slate-100'>Enterprise Plan</h3>
+                  <p className='text-sm text-slate-400'>For large-scale operations</p>
+                </div>
+              </div>
+              <div className='mb-6'>
+                <span className='text-3xl font-bold text-emerald-400'>XAF 99+</span>
+                <span className='text-slate-400'>/month</span>
+                <p className='text-xs text-slate-500 mt-1'>+ lowest custom commission fee</p>
+              </div>
+              <ul className='space-y-3 mb-6'>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Pro plan benefits</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Unlimited verification agents</span>
+                </li>
+                <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Custom branding options (remove "Powered by EventVault")</span>
+                </li>
+                {/* <li className='flex items-start gap-3 text-slate-300'>
+                  <i className='fas fa-check text-emerald-400 mt-1'></i>
+                  <span>Dedicated account manager for manual event completion audits</span>
+                </li> */}
+              </ul>
+              <button className='w-full cursor-pointer px-6 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium'>
+                Contact Sales
+              </button>
+            </div>
+          </div>
+          
 
           {/* Testimonial Carousel */}
           <div className="max-w-4xl mx-auto">
@@ -268,7 +395,7 @@ function LandingPage() {
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`cursor-pointer w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentTestimonial ? 'bg-emerald-400 w-6' : 'bg-slate-600'
                     }`}
                   />
@@ -289,7 +416,6 @@ function LandingPage() {
               </h2>
               <p className="text-xl text-slate-400 mb-8 leading-relaxed">
                 Download the EventVault mobile app and access your tickets anytime, anywhere. 
-                Features include offline ticket verification, dynamic QR codes, and real-time updates.
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <button className="flex items-center gap-3 px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-all duration-300 cursor-pointer">

@@ -78,7 +78,7 @@ export default function TicketTiers() {
             <span className="text-sm text-slate-400">Total Revenue</span>
             <i className="fas fa-dollar-sign text-emerald-400"></i>
           </div>
-          <div className="text-2xl font-bold text-slate-100">${totalRevenue.toLocaleString()}</div>
+          <div className="text-2xl font-bold text-slate-100">XAF {totalRevenue.toLocaleString()}</div>
         </div>
         <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 shadow-sm">
           <div className="flex items-center justify-between mb-2">
@@ -120,7 +120,7 @@ export default function TicketTiers() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">Price ($)</label>
+                      <label className="block text-sm font-medium text-slate-300 mb-2">Price (XAF)</label>
                       <input
                         type="number"
                         value={tier.price}
@@ -159,13 +159,13 @@ export default function TicketTiers() {
                   <div className="flex gap-2">
                     <button
                       onClick={handleSave}
-                      className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                      className="cursor-pointer px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
                     >
                       <i className="fas fa-save mr-2"></i>Save
                     </button>
                     <button
                       onClick={handleCancel}
-                      className="px-4 py-2 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
+                      className="cursor-pointer px-4 py-2 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
                     >
                       Cancel
                     </button>
@@ -179,7 +179,7 @@ export default function TicketTiers() {
                       <p className="text-sm text-slate-400">{tier.perks}</p>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-slate-100">${tier.price}</div>
+                      <div className="text-2xl font-bold text-slate-100">XAF {tier.price}</div>
                       <div className="text-sm text-slate-400">per ticket</div>
                     </div>
                   </div>
@@ -198,13 +198,13 @@ export default function TicketTiers() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleEdit(tier.id)}
-                      className="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-lg hover:bg-emerald-500/30 transition-colors text-sm font-medium"
+                      className="cursor-pointer px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-lg hover:bg-emerald-500/30 transition-colors text-sm font-medium"
                     >
                       <i className="fas fa-edit mr-2"></i>Edit
                     </button>
                     <button
                       onClick={() => handleDelete(tier.id)}
-                      className="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors text-sm font-medium"
+                      className="cursor-pointer px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors text-sm font-medium"
                     >
                       <i className="fas fa-trash mr-2"></i>Delete
                     </button>
@@ -234,7 +234,7 @@ export default function TicketTiers() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Price ($)</label>
+              <label className="block text-sm font-medium text-slate-700 mb-2">Price (XAF)</label>
               <input
                 type="number"
                 value={newTier.price}
@@ -266,7 +266,7 @@ export default function TicketTiers() {
           </div>
           <button
             onClick={handleAddTier}
-            className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
+            className="cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
           >
             <i className="fas fa-plus mr-2"></i>Add Tier
           </button>

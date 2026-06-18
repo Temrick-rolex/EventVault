@@ -48,7 +48,7 @@ export default function DashboardLayout({ currentPage, onPageChange, children }:
               <li key={item.id}>
                 <button
                   onClick={() => onPageChange(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                  className={`cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                     currentPage === item.id
                       ? 'bg-emerald-500/20 text-emerald-400 font-medium'
                       : 'text-slate-400 hover:bg-slate-800'
@@ -66,7 +66,7 @@ export default function DashboardLayout({ currentPage, onPageChange, children }:
         <div className="absolute bottom-4 left-4 right-4">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all duration-200 text-slate-400"
+            className="cursor-pointer w-full flex items-center justify-center gap-2 px-4 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all duration-200 text-slate-400"
           >
             <i className={`fas ${sidebarOpen ? 'fa-chevron-left' : 'fa-chevron-right'}`}></i>
             {sidebarOpen && <span>Collapse</span>}
@@ -85,7 +85,7 @@ export default function DashboardLayout({ currentPage, onPageChange, children }:
               </h1>
             </div>
             <div className="flex items-center gap-4">
-              <button className="relative p-2 text-slate-400 hover:text-emerald-400 transition-colors">
+              <button className="relative p-2 text-slate-400 hover:text-emerald-400 transition-colors cursor-pointer">
                 <i className="fas fa-bell text-xl"></i>
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>

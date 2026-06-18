@@ -4,10 +4,10 @@ export default function Analytics() {
   const [timeRange, setTimeRange] = useState('30d')
 
   const metrics = [
-    { label: 'Total Revenue', value: '$892,000', change: '+12.5%', trend: 'up' },
+    { label: 'Total Revenue', value: 'XAF 892,000', change: '+12.5%', trend: 'up' },
     { label: 'Tickets Sold', value: '15,420', change: '+8.2%', trend: 'up' },
     { label: 'Events Hosted', value: '24', change: '+2', trend: 'up' },
-    { label: 'Avg. Ticket Price', value: '$57.85', change: '-3.1%', trend: 'down' },
+    { label: 'Avg. Ticket Price', value: 'XAF 57.85', change: '-3.1%', trend: 'down' },
   ]
 
   const topEvents = [
@@ -116,7 +116,7 @@ export default function Analytics() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-semibold text-slate-100">${event.revenue.toLocaleString()}</div>
+                    <div className="font-semibold text-slate-100">XAF {event.revenue.toLocaleString()}</div>
                     <div className="text-sm text-emerald-400">{event.growth}</div>
                   </div>
                 </div>
@@ -155,28 +155,28 @@ export default function Analytics() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <button
             onClick={() => handleExport('Revenue')}
-            className="flex items-center justify-center gap-2 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
+            className="cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
           >
             <i className="fas fa-file-pdf text-red-600"></i>
             <span>Revenue Report</span>
           </button>
           <button
             onClick={() => handleExport('Ticket Sales')}
-            className="flex items-center justify-center gap-2 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
+            className="cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
           >
             <i className="fas fa-file-excel text-green-600"></i>
             <span>Ticket Sales</span>
           </button>
           <button
             onClick={() => handleExport('Event Performance')}
-            className="flex items-center justify-center gap-2 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
+            className="cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
           >
             <i className="fas fa-file-csv text-blue-600"></i>
             <span>Event Performance</span>
           </button>
           <button
             onClick={() => handleExport('Custom')}
-            className="flex items-center justify-center gap-2 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
+            className="cursor-pointer flex items-center justify-center gap-2 px-4 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors"
           >
             <i className="fas fa-cog text-slate-600"></i>
             <span>Custom Report</span>

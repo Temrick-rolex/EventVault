@@ -168,7 +168,7 @@ export default function CreateEvent() {
                   {formData.ticketTiers.length > 1 && (
                     <button
                       onClick={() => removeTicketTier(index)}
-                      className="text-red-400 hover:text-red-300 text-sm"
+                      className="cursor-pointer text-red-400 hover:text-red-300 text-sm"
                     >
                       <i className="fas fa-trash mr-1"></i>Remove
                     </button>
@@ -186,7 +186,7 @@ export default function CreateEvent() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">Price ($)</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">Price (XAF)</label>
                     <input
                       type="number"
                       value={tier.price}
@@ -220,7 +220,7 @@ export default function CreateEvent() {
             ))}
             <button
               onClick={addTicketTier}
-              className="w-full px-4 py-3 bg-emerald-500/20 text-emerald-400 rounded-lg hover:bg-emerald-500/30 transition-colors font-medium"
+              className="cursor-pointer w-full px-4 py-3 bg-emerald-500/20 text-emerald-400 rounded-lg hover:bg-emerald-500/30 transition-colors font-medium"
             >
               <i className="fas fa-plus mr-2"></i>Add Another Tier
             </button>
@@ -263,7 +263,7 @@ export default function CreateEvent() {
                   className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
                   placeholder="Describe the artwork you want to generate..."
                 />
-                <button className="mt-4 w-full px-4 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium">
+                <button className="cursor-pointer mt-4 w-full px-4 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium">
                   <i className="fas fa-magic mr-2"></i>Generate Artwork
                 </button>
               </div>
@@ -301,7 +301,7 @@ export default function CreateEvent() {
                 {formData.ticketTiers.map((tier, index) => (
                   <div key={index} className="flex justify-between text-sm py-2 border-b border-slate-700 last:border-0">
                     <span className="text-slate-400">{tier.name || `Tier ${index + 1}`}</span>
-                    <span className="text-slate-100">${tier.price || '0'} × {tier.quantity || '0'}</span>
+                    <span className="text-slate-100">XAF {tier.price || '0'} × {tier.quantity || '0'}</span>
                   </div>
                 ))}
               </div>
@@ -320,7 +320,7 @@ export default function CreateEvent() {
           <button
             onClick={prevStep}
             disabled={currentStep === 1}
-            className={`px-6 py-3 rounded-lg font-medium transition-all ${
+            className={`cursor-pointer px-6 py-3 rounded-lg font-medium transition-all ${
               currentStep === 1
                 ? 'bg-slate-700 text-slate-500 cursor-not-allowed'
                 : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
@@ -331,14 +331,14 @@ export default function CreateEvent() {
           {currentStep === steps.length ? (
             <button
               onClick={handleSubmit}
-              className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
+              className="cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
             >
               <i className="fas fa-check mr-2"></i>Create Event
             </button>
           ) : (
             <button
               onClick={nextStep}
-              className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
+              className="cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
             >
               Next<i className="fas fa-arrow-right ml-2"></i>
             </button>

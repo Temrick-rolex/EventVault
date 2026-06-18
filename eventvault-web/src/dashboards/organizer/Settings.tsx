@@ -59,7 +59,7 @@ export default function Settings() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
+            className={`cursor-pointer flex items-center gap-2 px-6 py-3 font-medium transition-all ${
               activeTab === tab.id
                 ? 'text-emerald-400 border-b-2 border-emerald-400'
                 : 'text-slate-400 hover:text-slate-200'
@@ -125,7 +125,7 @@ export default function Settings() {
           <div className="mt-6">
             <button
               onClick={handleProfileSave}
-              className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
+              className="cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all font-medium"
             >
               <i className="fas fa-save mr-2"></i>Save Changes
             </button>
@@ -146,7 +146,7 @@ export default function Settings() {
                 </div>
                 <button
                   onClick={() => handleToggle('security', 'twoFactorEnabled')}
-                  className={`relative w-12 h-6 rounded-full transition-colors ${
+                  className={`cursor-pointer relative w-12 h-6 rounded-full transition-colors ${
                     security.twoFactorEnabled ? 'bg-emerald-500' : 'bg-slate-600'
                   }`}
                 >
@@ -164,7 +164,7 @@ export default function Settings() {
                 </div>
                 <button
                   onClick={() => handleToggle('security', 'loginAlerts')}
-                  className={`relative w-12 h-6 rounded-full transition-colors ${
+                  className={`cursor-pointer relative w-12 h-6 rounded-full transition-colors ${
                     security.loginAlerts ? 'bg-emerald-500' : 'bg-slate-600'
                   }`}
                 >
@@ -195,7 +195,7 @@ export default function Settings() {
             <h2 className="text-lg font-semibold text-slate-100 mb-6">Change Password</h2>
             <button
               onClick={handlePasswordChange}
-              className="px-6 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium"
+              className="cursor-pointer px-6 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium"
             >
               <i className="fas fa-key mr-2"></i>Change Password
             </button>
@@ -215,7 +215,7 @@ export default function Settings() {
               </div>
               <button
                 onClick={() => handleToggle('notifications', 'email')}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
+                className={`cursor-pointer relative w-12 h-6 rounded-full transition-colors ${
                   notifications.email ? 'bg-emerald-500' : 'bg-slate-600'
                 }`}
               >
@@ -233,7 +233,7 @@ export default function Settings() {
               </div>
               <button
                 onClick={() => handleToggle('notifications', 'push')}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
+                className={`cursor-pointer relative w-12 h-6 rounded-full transition-colors ${
                   notifications.push ? 'bg-emerald-500' : 'bg-slate-600'
                 }`}
               >
@@ -251,7 +251,7 @@ export default function Settings() {
               </div>
               <button
                 onClick={() => handleToggle('notifications', 'ticketSales')}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
+                className={`cursor-pointer relative w-12 h-6 rounded-full transition-colors ${
                   notifications.ticketSales ? 'bg-emerald-500' : 'bg-slate-600'
                 }`}
               >
@@ -269,7 +269,7 @@ export default function Settings() {
               </div>
               <button
                 onClick={() => handleToggle('notifications', 'eventReminders')}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
+                className={`cursor-pointer relative w-12 h-6 rounded-full transition-colors ${
                   notifications.eventReminders ? 'bg-emerald-500' : 'bg-slate-600'
                 }`}
               >
@@ -287,7 +287,7 @@ export default function Settings() {
               </div>
               <button
                 onClick={() => handleToggle('notifications', 'agentUpdates')}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
+                className={`cursor-pointer relative w-12 h-6 rounded-full transition-colors ${
                   notifications.agentUpdates ? 'bg-emerald-500' : 'bg-slate-600'
                 }`}
               >
@@ -305,7 +305,7 @@ export default function Settings() {
               </div>
               <button
                 onClick={() => handleToggle('notifications', 'escrowAlerts')}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
+                className={`cursor-pointer relative w-12 h-6 rounded-full transition-colors ${
                   notifications.escrowAlerts ? 'bg-emerald-500' : 'bg-slate-600'
                 }`}
               >
@@ -329,7 +329,7 @@ export default function Settings() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-2xl font-bold">Professional Plan</h3>
-                  <p className="text-emerald-100">$49/month</p>
+                  <p className="text-emerald-100">XAF 49/month</p>
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-emerald-100">Next billing date</p>
@@ -338,7 +338,7 @@ export default function Settings() {
               </div>
             </div>
             <div className="mt-6">
-              <button className="px-6 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium">
+              <button className="cursor-pointer px-6 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium">
                 <i className="fas fa-arrow-up mr-2"></i>Upgrade Plan
               </button>
             </div>
@@ -356,7 +356,7 @@ export default function Settings() {
               </div>
             </div>
             <div className="mt-4">
-              <button className="px-6 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium">
+              <button className="cursor-pointer px-6 py-3 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-medium">
                 <i className="fas fa-plus mr-2"></i>Add Payment Method
               </button>
             </div>
@@ -366,9 +366,9 @@ export default function Settings() {
             <h2 className="text-lg font-semibold text-slate-100 mb-6">Billing History</h2>
             <div className="space-y-3">
               {[
-                { date: 'June 15, 2024', amount: '$49.00', status: 'Paid' },
-                { date: 'May 15, 2024', amount: '$49.00', status: 'Paid' },
-                { date: 'April 15, 2024', amount: '$49.00', status: 'Paid' },
+                { date: 'June 15, 2024', amount: 'XAF 49.00', status: 'Paid' },
+                { date: 'May 15, 2024', amount: 'XAF 49.00', status: 'Paid' },
+                { date: 'April 15, 2024', amount: 'XAF 49.00', status: 'Paid' },
               ].map((invoice, index) => (
                 <div key={index} className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                   <div>
