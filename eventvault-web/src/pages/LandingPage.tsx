@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 function LandingPage() {
   const navigate = useNavigate()
+  
+  // Scroll reveal hooks
+  const [trustBadgeRef, trustBadgeVisible] = useScrollReveal({ threshold: 0.1 })
+  const [aboutRef, aboutVisible] = useScrollReveal({ threshold: 0.1 })
+  const [testimonialsRef, testimonialsVisible] = useScrollReveal({ threshold: 0.1 })
+  const [mobileAppRef, mobileAppVisible] = useScrollReveal({ threshold: 0.1 })
   
   // Image carousel state
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -203,7 +210,12 @@ function LandingPage() {
       </section>
 
       {/* Trust Badge Section */}
-      <section className="py-20 bg-slate-900">
+      <section 
+        ref={trustBadgeRef as any}
+        className={`py-20 bg-slate-900 transition-all duration-700 ${
+          trustBadgeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -225,7 +237,12 @@ function LandingPage() {
       </section>
 
       {/* About Section with Testimonials */}
-      <section className="py-20 bg-slate-950">
+      <section 
+        ref={aboutRef as any}
+        className={`py-20 bg-slate-950 transition-all duration-700 ${
+          aboutVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
@@ -364,7 +381,12 @@ function LandingPage() {
           
 
           {/* Testimonial Carousel */}
-          <div className="max-w-4xl mx-auto">
+          <div 
+            ref={testimonialsRef as any}
+            className={`max-w-4xl mx-auto transition-all duration-700 ${
+              testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
             <div className="bg-slate-800/50 rounded-2xl p-8 md:p-12 border border-slate-700 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-emerald-600" />
               
@@ -407,7 +429,12 @@ function LandingPage() {
       </section>
 
       {/* Mobile App Propaganda Section */}
-      <section className="py-20 bg-slate-900">
+      <section 
+        ref={mobileAppRef as any}
+        className={`py-20 bg-slate-900 transition-all duration-700 ${
+          mobileAppVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-1 text-center lg:text-left">

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import DashboardLayout from '../dashboards/organizer/DashboardLayout'
 import DashboardHome from '../dashboards/organizer/DashboardHome'
 import EventsManagement from '../dashboards/organizer/EventsManagement'
@@ -9,9 +9,20 @@ import VerificationAgents from '../dashboards/organizer/VerificationAgents'
 import EscrowPayouts from '../dashboards/organizer/EscrowPayouts'
 import Analytics from '../dashboards/organizer/Analytics'
 import Settings from '../dashboards/organizer/Settings'
+import DashboardEntryTransition from '../components/DashboardEntryTransition'
 
 function DashboardPage() {
   const [currentPage, setCurrentPage] = useState('dashboard')
+  const [isLoading, setIsLoading] = useState(false)
+
+  // Simulate loading when page changes
+  useEffect(() => {
+    setIsLoading(true)
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
+    return () => clearTimeout(timer)
+  }, [currentPage])
 
   const renderPage = () => {
     switch (currentPage) {
@@ -40,7 +51,9 @@ function DashboardPage() {
 
   return (
     <DashboardLayout currentPage={currentPage} onPageChange={setCurrentPage}>
-      {renderPage()}
+      <DashboardEntryTransition isLoading={isLoading}>
+        {renderPage()}
+      </DashboardEntryTransition>
     </DashboardLayout>
   )
 }

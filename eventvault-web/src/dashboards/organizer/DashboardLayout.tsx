@@ -63,13 +63,23 @@ export default function DashboardLayout({ currentPage, onPageChange, children }:
         </nav>
 
         {/* Toggle Button */}
-        <div className="absolute bottom-4 left-4 right-4">
+        <div className="absolute bottom-20 left-4 right-4">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="cursor-pointer w-full flex items-center justify-center gap-2 px-4 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all duration-200 text-slate-400"
           >
             <i className={`fas ${sidebarOpen ? 'fa-chevron-left' : 'fa-chevron-right'}`}></i>
             {sidebarOpen && <span>Collapse</span>}
+          </button>
+        </div>
+
+        {/* Logout Button */}
+        <div className="absolute bottom-4 left-4 right-4">
+          <button
+            className="cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-slate-400 hover:bg-red-500/10 hover:text-red-400"
+          >
+            <i className="fas fa-sign-out-alt text-lg"></i>
+            {sidebarOpen && <span>Logout</span>}
           </button>
         </div>
       </aside>
